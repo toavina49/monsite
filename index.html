@@ -80,6 +80,9 @@ color: white;
 <script async defer data-domain="toavina49.github.io" src="https://plausible.io/js/plausible.js"></script>
 
 
+
+
+
         </head>
          <body>
 <div class="container">
@@ -106,6 +109,28 @@ color: white;
 
 </div>
 </form>
+
+
+
+
+<script>
+fetch("http://192.168.8.101:5000/track", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    url: window.location.href,
+    referrer: document.referrer,
+    userAgent: navigator.userAgent,
+    timestamp: new Date().toISOString()
+  })
+});
+</script>
+
+
+
+
 
 </body>
 </html>
