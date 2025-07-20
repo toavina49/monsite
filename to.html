@@ -5,40 +5,43 @@
   <title>Test d'interaction</title>
   <style>
     body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #222;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
+ display: flex;
+ flex-direction: column;
+  align-items: center;
+  background: #222;
+  color: #fff;
+  font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 20px;
       transition: background 0.5s;
     }
+
+
+
+
 
     .genre {
       text-align: center;
     }
-
-    input[type="radio"],
-    input[type="checkbox"] {
-      width: 25px;
-      height: 25px;
+  input[type="radio"],
+  input[type="checkbox"] {
+   width: 25px;
+  height: 25px;
     }
 
-    input[type="date"] {
-      width: 150px;
-      height: 60px;
-      font-size: 16px;
+  input[type="date"] {
+   width: 150px;
+   height: 60px;
+   font-size: 16px;
     }
 
     button {
-      width: 200px;
-      height: 50px;
-      font-size: 24px;
-      margin-top: 20px;
-      color: red;
-      font-weight: bold;
+   width: 200px;
+    height: 50px;
+    font-size: 24px;
+   margin-top: 20px;
+    color: red;
+  font-weight: bold;
     }
   </style>
 
@@ -67,12 +70,18 @@
 
   <button type="button" onclick="validerAge()">Confirme</button>
 
-  <script>
+ 
+
+
+
+
+
+ <script>
     function validerAge() {
       const age = document.querySelector('input[name="age"]:checked');
 
-      if (age && age.value === "oui") {
-        // Affiche la 2e étape dans la même page
+                        if (age && age.value === "oui") {
+       
         document.body.innerHTML = `
           <h1>Étape 2 : Cocher les bonnes réponses</h1>
           <label><input type="checkbox" name="taille" value="oui" /> Tu es petite ?</label><br>
@@ -98,21 +107,20 @@
 
       if (taille && passion && hobby && situation) {
         messageDiv.innerHTML = `
-          <div style="font-size: 30px; color: pink; text-align: center;">
-            💖 Je crois que tu me plais 💖
+ <div style="font-size: 30px; color: pink; text-align: center;">
+              💖 Je crois que tu me plais 💖
           </div>
         `;
-        document.body.style.background = "linear-gradient(to bottom,#ff69b4, #ffe6cc)";
-      } else {
+  document.body.style.background = "linear-gradient(to bottom,#ff69b4, #ffe6cc)";
+  } else {
         messageDiv.innerHTML = `
-          <div style="font-size: 30px; color: blue; text-align: center;">
+  <div style="font-size: 30px; color: blue; text-align: center;">
             💔 Désolé, je ne t'aime pas 💔
           </div>
         `;
-        document.body.style.background = "linear-gradient(135deg, #f7cac9, #92a8d1)";
-      }
-    }
-  </script>
+   document.body.style.background = "linear-gradient(135deg, #f7cac9, #92a8d1)";
+   }
+    } </script>
 </body>
 </html>
 
