@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,14 +24,14 @@
     .genre {
       text-align: center;
     }
-  input[type="radio"],
-  input[type="checkbox"] {
-   width: 25px;
+ input[type="radio"],
+ input[type="checkbox"] {
+ width: 25px;
   height: 25px;
     }
 
   input[type="date"] {
-   width: 150px;
+ width: 150px;
    height: 60px;
    font-size: 16px;
     }
@@ -52,7 +53,7 @@
 <body>
   <h1>AVERTISSEMENT</h1>
   <p>Ce site appartient à moi-même, Anec Rta. Son but est simple : suivez les étapes et vous verrez.</p>
-  <p><mark>Etape 1</mark> : INTERAGISSEZ</p>
+  <p><mark>⛔Etape 1 </mark> : INTERAGISSEZ</p>
 
   <input type="radio" id="oui" name="age" value="oui">
   <label for="oui">Mineur</label>
@@ -68,59 +69,94 @@
 
   <p id="resultat"></p>
 
-  <button type="button" onclick="validerAge()">Confirme</button>
+     <button  type="button"onclick="validerAge()">Confirme</button>
 
  
 
 
 
-
-
  <script>
-    function validerAge() {
-      const age = document.querySelector('input[name="age"]:checked');
+   function validerAge() {
+   const age = document.querySelector('input[name="age"]:checked');
 
-                        if (age && age.value === "oui") {
-       
-        document.body.innerHTML = `
-          <h1>Étape 2 : Cocher les bonnes réponses</h1>
-          <label><input type="checkbox" name="taille" value="oui" /> Tu es petite ?</label><br>
-          <label><input type="checkbox" name="passion" value="oui" /> Aimes-tu les jeux vidéo ?</label><br>
-          <label><input type="checkbox" name="situation" value="oui" /> Es-tu célibataire ?</label><br>
-          <label><input type="checkbox" name="hobby" value="oui" /> Fais-tu du sport ?</label><br><br>
-          <button onclick="verifierReponses()">Valider</button>
-          <div id="messageFinal" style="margin-top: 30px;"></div>
-        `;
-      } else if (age && age.value === "non") {
-        document.getElementById("resultat").innerText = "Vous êtes vieux/vieille, sélectionnez votre âge ci-dessus.";
-      } else {
+                        if(age && age.value === "oui") {
+               document.body.innerHTML = `
+
+<h1>⛔Étape 2 : Cocher les bonnes réponses</h1>
+          <label><input type="checkbox" name="taille" value="oui" />❓Tu es petite ?</label><br>
+         <label><input type="checkbox" name="passion" value="oui" /> 🎮Aimes-tu les jeux vidéo ?</label><br>
+       <label><input type="checkbox" name="situation" value="oui" />💗Es-tu célibataire ?</label><br>
+           <label><input type="checkbox" name="hobby" value="oui" />⛸ Fais-tu du sport ?</label>
+          <label><input type="checkbox" name="bosser" value="oui" />📝Aimes tu bosser?</label><br><br></div>
+<br><br>
+          <button onclick="verifierReponses()">Valider🎁</button>
+          <div id="messageFinal" style="margin-top: 30px;"></div>`;
+      }
+
+
+
+
+
+           else if (age && age.value === "non") {
+        document.getElementById("resultat").innerText = "Vous êtes trop jeune je ne suis pas fait pour vous";
+      } 
+
+
+
+
+
+     else {
         document.getElementById("resultat").innerText = "Veuillez choisir une option.";
       }
     }
+
+
 
     function verifierReponses() {
       const taille = document.querySelector('input[name="taille"]:checked');
       const passion = document.querySelector('input[name="passion"]:checked');
       const hobby = document.querySelector('input[name="hobby"]:checked');
       const situation = document.querySelector('input[name="situation"]:checked');
+     const bosser = document.querySelector('input[name="bosser"]:checked');
       const messageDiv = document.getElementById("messageFinal");
 
-      if (taille && passion && hobby && situation) {
+                 if (passion && hobby && situation && bosser) {
         messageDiv.innerHTML = `
- <div style="font-size: 30px; color: pink; text-align: center;">
+ <div style="font-size: 35px; color: red; text-align: center;">
               💖 Je crois que tu me plais 💖
-          </div>
-        `;
+          <h1>ndao tode miarak🍑</h1></div>
+<div style="font-size: 25px; color:blue; text-align: center;">
+<input type="tel" placeholder="Ton numéro">
+ <button type="button" onclick="ok()">ok</button></div>
+           `;
   document.body.style.background = "linear-gradient(to bottom,#ff69b4, #ffe6cc)";
-  } else {
-        messageDiv.innerHTML = `
-  <div style="font-size: 30px; color: blue; text-align: center;">
-            💔 Désolé, je ne t'aime pas 💔
-          </div>
-        `;
-   document.body.style.background = "linear-gradient(135deg, #f7cac9, #92a8d1)";
-   }
-    } </script>
+   
+}
+
+ else {
+  messageDiv.innerHTML = `
+    <div style="font-size: 30px; color: blue; text-align: center;">
+      💔 Désolé, je ne t'aime pas 💔
+    </div>
+  `;
+  document.body.style.background = "linear-gradient(135deg, #f7cac9, #92a8d1)";
+}
+}
+
+function ok(){
+  const messageDiv =document.getElementById("messageFinal");
+  messageDiv.innerHTML = `
+    <div style="font-size: 30px; color:blue; text-align: center;"><h1>bye merci beaucoup</h1>
+    <footer>by anec</footer>
+    </div>
+  `;
+}
+
+
+
+
+
+     </script>
 </body>
 </html>
 
