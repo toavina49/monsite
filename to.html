@@ -5,12 +5,15 @@
   <meta charset="UTF-8">
   <title>Test d'interaction</title>
   <style>
-    body {
+      
+
+
+      body {
  display: flex;
  flex-direction: column;
-  align-items: center;
-  background: #222;
-  color: #fff;
+  align-items:center ;
+  background:#222 ;
+  color:#fff ;
   font-family: Arial, sans-serif;
    margin: 0;
    padding: 20px;
@@ -30,7 +33,9 @@
   height: 25px;
     }
 
-  input[type="date"] {
+
+ 
+      input[type="date"] {
  width: 150px;
    height: 60px;
    font-size: 16px;
@@ -84,7 +89,7 @@
 
 <h1>⛔Étape 2 : Cocher les bonnes réponses</h1>
           <label><input type="checkbox" name="taille" value="oui" />❓Tu es petite ?</label><br>
-         <label><input type="checkbox" name="passion" value="oui" /> 🎮Aimes-tu les jeux vidéo ?</label><br>
+            <label><input type="checkbox" name="passion" value="oui" /> 🎮Aimes-tu les jeux vidéo ?</label><br>
        <label><input type="checkbox" name="situation" value="oui" />💗Es-tu célibataire ?</label><br>
            <label><input type="checkbox" name="hobby" value="oui" />⛸ Fais-tu du sport ?</label>
           <label><input type="checkbox" name="bosser" value="oui" />📝Aimes tu bosser?</label><br><br></div>
@@ -98,10 +103,22 @@
 
 
            else if (age && age.value === "non") {
-        document.getElementById("resultat").innerText = "Vous êtes trop jeune je ne suis pas fait pour vous";
-      } 
+document.body.innerHTML =`
+        <div style="background-color:red;"><h1>Vous êtes trop vieux je ne suis pas fait pour vous📌🔞 </h1>  </div>
+<button onclick="Retour">Retour</button>
 
 
+
+document .addEventListener("Keydown",function (event)
+{
+if(event.key==="Escape")
+{
+history.back();//revenir a la page precedente
+}
+});
+
+`;
+}
 
 
 
@@ -127,8 +144,8 @@
           <h1>ndao tode miarak🍑</h1></div>
 <div style="font-size: 25px; color:blue; text-align: center;">
 <input type="tel" placeholder="Ton numéro">
- <button type="button" onclick="ok()">ok</button></div>
-           `;
+<button type="button" onclick="ok()">ok</button></div>
+          `;
   document.body.style.background = "linear-gradient(to bottom,#ff69b4, #ffe6cc)";
    
 }
@@ -147,7 +164,7 @@ function ok(){
   const messageDiv =document.getElementById("messageFinal");
   messageDiv.innerHTML = `
     <div style="font-size: 30px; color:blue; text-align: center;"><h1>bye merci beaucoup</h1>
-    <footer>by anec</footer>
+    <footer>by anec </footer>
     </div>
   `;
 }
