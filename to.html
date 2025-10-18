@@ -1,179 +1,160 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Test d'interaction</title>
+  <title>MB Milalao</title>
   <style>
-      
-
-
-      body {
- display: flex;
- flex-direction: column;
-  align-items:center ;
-  background:#222 ;
-  color:#fff ;
-  font-family: Arial, sans-serif;
-   margin: 0;
-   padding: 20px;
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
       transition: background 0.5s;
     }
 
-
-
-
-
-    .genre {
+    h1, p {
       text-align: center;
     }
- input[type="radio"],
- input[type="checkbox"] {
- width: 25px;
-  height: 25px;
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
     }
 
-
- 
-      input[type="date"] {
- width: 150px;
-   height: 60px;
-   font-size: 16px;
+    input[type="color"],
+    input[type="date"],
+    input[type="tel"] {
+      height: 40px;
+      font-size: 16px;
+      margin-left: 10px;
     }
 
     button {
-   width: 200px;
-    height: 50px;
-    font-size: 24px;
-   margin-top: 20px;
-    color: red;
-  font-weight: bold;
+      width: 200px;
+      height: 50px;
+      font-size: 20px;
+      margin-top: 20px;
+      color: red;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    label {
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #messageFinal {
+      margin-top: 30px;
+      text-align: center;
     }
   </style>
-
   <script async defer data-domain="toavina49.github.io/monsite" src="https://plausible.io/js/script.js"></script>
-
 </head>
-
 <body>
+
   <h1>AVERTISSEMENT</h1>
   <p>Ce site appartient à moi-même, Anec Rta. Son but est simple : suivez les étapes et vous verrez.</p>
-  <p><mark>⛔Etape 1 </mark> : INTERAGISSEZ</p>
+  <p><mark>⛔ Étape 1 </mark> : INTERAGISSEZ</p>
 
   <input type="radio" id="oui" name="age" value="oui">
-  <label for="oui">Mineur</label>
+  <label for="oui">Mineur</label><br><br>
   <input type="radio" id="non" name="age" value="non">
-  <label for="non">Majeur</label>
+  <label for="non">Majeur</label><br><br>
 
-  <br><br>
-
-  <label>Couleur préférée : <input type="color" /></label>
-  <br><br>
-
-  <label>Date de naissance : <input type="date" /></label>
+  <label>Couleur préférée : <input type="color" /></label><br><br>
+  <label>Date de naissance : <input type="date" style="color:cyan" /></label>
 
   <p id="resultat"></p>
+  <button type="button" onclick="validerAge()">Confirmer</button>
 
-     <button  type="button"onclick="validerAge()">Confirme</button>
+  <script>
+    function validerAge() {
+      const age = document.querySelector('input[name="age"]:checked');
 
- 
-
-
-
- <script>
-   function validerAge() {
-   const age = document.querySelector('input[name="age"]:checked');
-
-                        if(age && age.value === "oui") {
-               document.body.innerHTML = `
-
-<h1>⛔Étape 2 : Cocher les bonnes réponses</h1>
-          <label><input type="checkbox" name="taille" value="oui" />❓Tu es petite ?</label><br>
-            <label><input type="checkbox" name="passion" value="oui" /> 🎮Aimes-tu les jeux vidéo ?</label><br>
-       <label><input type="checkbox" name="situation" value="oui" />💗Es-tu célibataire ?</label><br>
-           <label><input type="checkbox" name="hobby" value="oui" />⛸ Fais-tu du sport ?</label>
-          <label><input type="checkbox" name="bosser" value="oui" />📝Aimes tu bosser?</label><br><br></div>
-<br><br>
-          <button onclick="verifierReponses()">Valider🎁</button>
-          <div id="messageFinal" style="margin-top: 30px;"></div>`;
+      if (!age) {
+        document.getElementById("resultat").innerText = "Veuillez choisir une option.";
+        return;
       }
 
+      if (age.value === "oui") {
+        // Étape 2 : questionnaire
+        document.body.innerHTML = `
+          <h1>⛔ Étape 2 : Cocher les bonnes réponses</h1>
+          <label><input type="checkbox" name="taille" /> ❓Tu es petite ?</label><br>
+          <label><input type="checkbox" name="passion" /> 🎮 Aimes-tu les jeux vidéo ?</label><br>
+          <label><input type="checkbox" name="situation" /> 💗 Es-tu célibataire ?</label><br>
+          <label><input type="checkbox" name="hobby" /> ⛸ Fais-tu du sport ?</label><br>
+          <label><input type="checkbox" name="bosser" /> 📝 Aimes-tu bosser ?</label><br><br>
+          <button onclick="verifierReponses()">Valider 🎁</button>
+          <div id="messageFinal"></div>
+        `;
+      } else if (age.value === "non") {
+        // Trop vieux
+        document.body.innerHTML = `
+          <div style="background-color:red; text-align:center; padding:30px;">
+            <h1>Vous êtes trop vieux, je ne suis pas fait pour vous 📌🔞</h1>
+            <button id="retourBtn">Retour</button>
+          </div>
+        `;
 
+        // Recharger la page si on clique sur Retour
+        document.getElementById("retourBtn").addEventListener("click", () => {
+          location.reload();
+        });
 
-
-
-           else if (age && age.value === "non") {
-document.body.innerHTML =`
-        <div style="background-color:red;"><h1>Vous êtes trop vieux je ne suis pas fait pour vous📌🔞 </h1>  </div>
-<button onclick="Retour">Retour</button>
-
-
-
-document .addEventListener("Keydown",function (event)
-{
-if(event.key==="Escape")
-{
-history.back();//revenir a la page precedente
-}
-});
-
-`;
-}
-
-
-
-     else {
-        document.getElementById("resultat").innerText = "Veuillez choisir une option.";
+        // Revenir à la page précédente si on appuie sur Échap
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            history.back();
+          }
+        });
       }
     }
-
-
 
     function verifierReponses() {
       const taille = document.querySelector('input[name="taille"]:checked');
       const passion = document.querySelector('input[name="passion"]:checked');
       const hobby = document.querySelector('input[name="hobby"]:checked');
       const situation = document.querySelector('input[name="situation"]:checked');
-     const bosser = document.querySelector('input[name="bosser"]:checked');
+      const bosser = document.querySelector('input[name="bosser"]:checked');
       const messageDiv = document.getElementById("messageFinal");
 
-                 if (passion && hobby && situation && bosser) {
+      if (passion && hobby && situation && bosser) {
         messageDiv.innerHTML = `
- <div style="font-size: 35px; color: red; text-align: center;">
-              💖 Je crois que tu me plais 💖
-          <h1>ndao tode miarak🍑</h1></div>
-<div style="font-size: 25px; color:blue; text-align: center;">
-<input type="tel" placeholder="Ton numéro">
-<button type="button" onclick="ok()">ok</button></div>
-          `;
-  document.body.style.background = "linear-gradient(to bottom,#ff69b4, #ffe6cc)";
-   
-}
+          <div style="font-size: 35px; color: red;">💖 Je crois que tu me plais 💖</div>
+          <h1>ndao tode miarak 🍑</h1>
+          <div style="font-size: 25px; color:blue;">
+            <input type="tel" placeholder="Ton numéro">
+            <button type="button" onclick="ok()">OK</button>
+          </div>
+        `;
+        document.body.style.background = "linear-gradient(to bottom, #ff69b4, #ffe6cc)";
+      } else {
+        messageDiv.innerHTML = `
+          <div style="font-size: 30px; color: blue;">
+            💔 Désolé, je ne t'aime pas 💔
+          </div>
+        `;
+        document.body.style.background = "linear-gradient(135deg, #f7cac9, #92a8d1)";
+      }
+    }
 
- else {
-  messageDiv.innerHTML = `
-    <div style="font-size: 30px; color: blue; text-align: center;">
-      💔 Désolé, je ne t'aime pas 💔
-    </div>
-  `;
-  document.body.style.background = "linear-gradient(135deg, #f7cac9, #92a8d1)";
-}
-}
-
-function ok(){
-  const messageDiv =document.getElementById("messageFinal");
-  messageDiv.innerHTML = `
-    <div style="font-size: 30px; color:blue; text-align: center;"><h1>bye merci beaucoup</h1>
-    <footer>by anec </footer>
-    </div>
-  `;
-}
-
-
-
-
-
-     </script>
+    function ok() {
+      const messageDiv = document.getElementById("messageFinal");
+      messageDiv.innerHTML = `
+        <div style="font-size: 30px; color:blue;">
+          <h1>Bye, merci beaucoup !</h1>
+          <footer>by Anec</footer>
+        </div>
+      `;
+    }
+  </script>
 </body>
 </html>
-
